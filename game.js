@@ -22,6 +22,13 @@ $(document).on("keypress", function () {
     };
 });
 
+$("#start").click(function (event) {
+    $("#start").hide()
+    game = "Started";
+    storedButtons = []
+    startGame();
+})
+
 // changes game level, adds random button to rotation list, add animation for button and play a sound
 function startGame() {
 
@@ -61,6 +68,7 @@ $(".btn").click(function (event) {
         game = "Stopped"; rotation = []; storedButtons = []; level = 1; num = 0; randomNumber = Math.floor(Math.random() * 4);
         sound["wrong"].play();
         $("h1").text("Game Over, Press Any Key to Restart");
+        $("#start").show();
         $("body").css("background-color", "red")
         setTimeout(function () {
             $("body").css("background-color", "");
